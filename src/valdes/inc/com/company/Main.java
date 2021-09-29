@@ -6,10 +6,11 @@ public class Main {
 
     public static void main(String[] args) {
         int a = readNumber();
-// calculateEvenAndOddSumInNumber(a);
         int b = readNumber();
-        int c = readNumber();
-        calculateFromAToB(a, b , c);
+
+        int sum = calculateFromAToB(a, b);
+        printSumFromAToB(sum);
+
     }
 
     private static int readNumber() {
@@ -23,57 +24,35 @@ public class Main {
             System.exit(1);
         }
         return number;
-
     }
 
-    private static void calculateEvenAndOddSumInNumber(int number) {
-        int a = number;
-        int even = 0;
-        int odd = 0;
-        for (int i = 1; a / i > 0; i *= 10) {
-            if ((a / i) % 2 == 0)
-                even++;
-            else
-                odd++;
-        }
-        System.out.println("Четных чисел: " + even + " Нечетных чисел: " + odd);
-
-        if (even == odd) {
-            System.out.println("Число походит под условие задачи!");
-        } else {
-            System.out.println("Число не походит под условие задачи...");
-        }
-    }
-
-    private static int calculateFromAToB(int numberA, int numberB, int number){
+    private static int calculateFromAToB(int numberA, int numberB) {
 
         int sum = 0;
-        for(int m = numberA; m <= numberA; m++){
-            int a = number;
+        for (int m = numberA; m <= numberB; m++) {
             int even = 0;
             int odd = 0;
-            for (int i = 1; a / i > 0; i *= 10) {
-                if ((a / i) % 2 == 0)
+            for (int i = 1; m / i > 0; i *= 10) {
+                if ((m / i) % 2 == 0)
                     even++;
                 else
                     odd++;
             }
-            System.out.println("Четных чисел: " + even + " Нечетных чисел: " + odd);
 
             if (even == odd) {
-                System.out.println("Число походит под условие задачи!");
+                sum += m;
+                System.out.println(m);
             } else {
-                System.out.println("Число не походит под условие задачи...");
+                System.out.println("Пропуск числа");
             }
-
-
-            sum += m;
-
         }
 
-
-        System.out.print(sum);
         return sum;
+    }
+
+
+    private static void printSumFromAToB(int sum) {
+        System.out.println("сумма чисел от А до B: " + sum);
     }
 
 }
